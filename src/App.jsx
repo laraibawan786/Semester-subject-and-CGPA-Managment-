@@ -1,22 +1,23 @@
-import { Routes, Route, Link } from "react-router-dom";
-import Splash from "./pages/Splash";
-import Register from "./pages/Register";
-import Students from "./pages/Students";
-import Navbar from "./components/Navbar";  
-import StudentCard from "./components/StudentCard";  
+import React from "react";
+import { AppProvider } from "./context/AppContext";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./index.css";
 
-export default function App() {
+function App() {
   return (
-    <div>
-      {/* ✅ Use Navbar Component here */}
-      <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Splash />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/students" element={<Students />} />
-      </Routes>
-    </div>
+    <AppProvider>
+      <div className="min-h-screen flex flex-col bg-gradient-to-b from-pink-50 via-purple-50 to-blue-50">
+        <Navbar />
+        <main className="flex-grow">
+          <Home />
+        </main>
+        <Footer />
+      </div>
+    </AppProvider>
   );
 }
 
+export default App;
